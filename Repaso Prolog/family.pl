@@ -33,8 +33,8 @@ es_nieto_de(X,Z):-es_hijo_de(X,Y),es_hija_de(Y,Z),es_hombre(X).
 es_nieta_de(X,Z):-es_hija_de(X,Y),es_hijo_de(Y,Z),es_mujer(X).
 es_nieta_de(X,Z):-es_hija_de(X,Y),es_hija_de(Y,Z),es_mujer(X).
 
-es_primo_de(P,X):-es_nieto_de(P,Y), es_nieto_de(X,Y), es_hombre(P).
-es_primo_de(P,X):-es_nieto_de(P,Y), es_nieta_de(X,Y), es_hombre(P).
+es_primo_de(P,X):-es_nieto_de(P,Y), es_nieta_de(X,Y), es_hombre(P), P\=X.
+es_primo_de(P,X):-es_nieto_de(P,Y), es_nieto_de(X,Y), es_hombre(P), P\=X.
 
-es_prima_de(P,X):-es_nieta_de(P,Y), es_nieto_de(X,Y), es_mujer(P).
-es_prima_de(P,X):-es_nieta_de(P,Y), es_nieta_de(X,Y), es_mujer(P).
+es_prima_de(P,X):-es_nieta_de(P,Y), es_nieto_de(X,Y), es_mujer(P), P\=X.
+es_prima_de(P,X):-es_nieta_de(P,Y), es_nieta_de(X,Y), es_mujer(P), P\=X.
