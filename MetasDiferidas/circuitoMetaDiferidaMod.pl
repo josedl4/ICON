@@ -67,6 +67,9 @@ solve(true):- !.
 solve((A & B)):- !, solve(A), solve(B).
 solve(A):- !, clause((B ---> A), Body), solve(B).
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%% Implementación para generar una lista con los estados necesarios de los interruptores y
+%%%%%% componentes del circuito  electrico.
 dsolve(true, D, D):-!.
 dsolve((A & B), D1, D2) :- !, dsolve(A, D1, D3), dsolve(B, D3, D2).
 dsolve(A, D, [A|D]):- delay(A), !.
@@ -74,4 +77,3 @@ dsolve(A, D1, D2):- clause((B ---> A), Body), dsolve(B, D1, D2).
 delay(A):- A = ok(X).
 delay(A):- A = up(X).
 delay(A):- A = down(X).
-%dsolve(A, D1, D2):- !, A = ok(X), append(D2,[A],D2).
