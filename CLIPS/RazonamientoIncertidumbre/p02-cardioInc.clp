@@ -510,14 +510,14 @@
 
 
 ;;; Mostramos por consola los diagnosticos realizados a nuestros Pacientes
-(defrule diagnosticar-enfermedad
+(defrule diagnosticarEnfermedad
 	(declare (salience -1000))         ; Tendra la prioridad mas baja para que se ejecute la
    (oavc-m	(objeto ?x)              ; ultima de todas las reglas
             (atributo diagnostico)
-           	(valor ?enfermedad)
-          	(factor ?f1))
+           	(valor ?enf)
+          	(factor ?f))
 =>
 	 (printout T "El paciente " ?x ":" crlf)                     ; Mostramos por pantalla el diagnostico
-   (printout T "Padece la Enfermedad: " ?enfermedad crlf)      ; de nuestro paciente
-   (printout T "Con una certeza de ello del: " ?f1 crlf crlf)
+   (printout T "Padece la Enfermedad: " ?enf crlf)      ; de nuestro paciente
+   (printout T "Con una certeza de ello del: " ?f crlf crlf)
 )
